@@ -12,7 +12,7 @@
 
   <!-- Application Identifier (TeamID.BundleID) -->
   <key>com.apple.application-identifier</key>
-  <string>L284ZYR49L.com.client.metaadswrapper</string>
+  <string>L284ZYR49L.graure-meta-ads</string>
 
   <!-- Network: required to load adsmanager.facebook.com -->
   <key>com.apple.security.network.client</key>

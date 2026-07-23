@@ -115,7 +115,7 @@ describe('review prompt state', () => {
     await requestNativeReview('1.17.0')
 
     expect(openExternal).toHaveBeenCalledWith(
-      'https://apps.apple.com/app/id6778116535?action=write-review'
+      'https://apps.apple.com/app/id6794068025?action=write-review'
     )
   })
 })

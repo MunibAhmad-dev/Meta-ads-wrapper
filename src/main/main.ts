@@ -124,7 +124,14 @@ app.on('web-contents-created', (_event, contents) => {
             height: 680,
             title: 'Sign in',
             autoHideMenuBar: true,
-            webPreferences: { nodeIntegration: false, contextIsolation: true },
+            // Explicitly share the opener's session/partition. Electron does NOT
+            // reliably inherit it for popups opened with rel="noopener" (which
+            // Facebook's own login/checkpoint flow uses) — without this, the
+            // popup gets a fresh default-partition session with none of the
+            // cookies or CSRF tokens the in-progress login depends on, so
+            // password-based login silently fails while session-based
+            // "Continue as X" logins (which never hit this popup path) work fine.
+            webPreferences: { nodeIntegration: false, contextIsolation: true, session: contents.session },
           },
         };
       }

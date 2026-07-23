@@ -15,7 +15,7 @@ const REVIEW_STATE_VERSION = 'direct-review-v1'
 export const REVIEW_SNOOZE_MS = 7 * 24 * 60 * 60 * 1000
 
 // https form so it passes the main-process shell:openExternal allowlist.
-const APP_STORE_REVIEW_URL = 'https://apps.apple.com/app/id6778116535?action=write-review'
+const APP_STORE_REVIEW_URL = 'https://apps.apple.com/app/id6794068025?action=write-review'
 
 /**
  * Clear answers written by the old native-only flow. That implementation

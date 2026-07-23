@@ -66,7 +66,7 @@ export function ReviewModal({ open, onClose, currentVersion }: Props) {
   const handleWriteReview = async () => {
     localStorage.setItem(REVIEW_LEFT_KEY, '1')
     localStorage.setItem(REVIEW_VERSION_KEY, currentVersion)
-    const APP_STORE_URL = 'itms-apps://itunes.apple.com/app/id6778116535?action=write-review'
+    const APP_STORE_URL = 'itms-apps://itunes.apple.com/app/id6794068025?action=write-review'
     try {
       const native = await window.electronAPI?.requestNativeReview?.()
       if (!native) {
