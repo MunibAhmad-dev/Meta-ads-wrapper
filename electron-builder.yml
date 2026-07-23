@@ -1,0 +1,84 @@
+appId: com.client.metaadswrapper
+productName: Meta Ads Manager
+copyright: "Copyright © 2024 Meta Ads Manager. Not affiliated with Meta Platforms, Inc."
+
+directories:
+  output: release
+  buildResources: assets
+
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - "!**/*.map"
+  # Native SKStoreReviewController addon (in-app rating overlay).
+  - node_modules/store-review/**/*
+
+# Native .node binaries cannot be loaded from inside the asar archive — unpack
+# the store-review addon so require() can dlopen it at runtime.
+asarUnpack:
+  - node_modules/store-review/build/Release/*.node
+
+extraResources:
+  - from: assets/
+    to: assets/
+    filter:
+      - "**/*"
+  # Ship the .env so the packaged app can read OPENAI_API_KEY at runtime.
+  # Lands at <Resources>/.env (process.resourcesPath) — see loadEnv() in main.ts.
+  - from: .env
+    to: .env
+
+# ─── macOS DMG (direct distribution) ──────────────────────────────────────────
+mac:
+  category: public.app-category.business
+  icon: assets/icon.png
+  target:
+    - target: dmg
+      arch: [arm64]
+    - target: mas
+      arch: [universal]
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  hardenedRuntime: true
+  gatekeeperAssess: true
+  notarize:
+    teamId: L284ZYR49L
+  extendInfo:
+    NSMicrophoneUsageDescription: "Used for voice and video features within Meta Business tools."
+    NSCameraUsageDescription: "Used for voice and video features within Meta Business tools."
+
+dmg:
+  title: Meta Ads Manager
+  icon: assets/icon.png
+  window:
+    width: 600
+    height: 380
+  contents:
+    - x: 130
+      y: 200
+    - x: 430
+      y: 200
+      type: link
+      path: /Applications
+
+# ─── Mac App Store ─────────────────────────────────────────────────────────────
+mas:
+  type: distribution
+  identity: "Apple Distribution: Mihai Graure (L284ZYR49L)"
+  hardenedRuntime: false
+  entitlements: build/entitlements.mas.plist
+  entitlementsInherit: build/entitlements.mas.inherit.plist
+  entitlementsLoginHelper: build/entitlements.mas.loginhelper.plist
+  provisioningProfile: instagramprovsionarywithxcode.provisionprofile
+  icon: assets/icon.png
+  extendInfo:
+    NSMicrophoneUsageDescription: "Used for voice and video features within Meta Business tools."
+    NSCameraUsageDescription: "Used for voice and video features within Meta Business tools."
+  # Do NOT set binaries: [] — electron-builder must auto-detect all Electron helper
+  # binaries so they receive MAS entitlements (inherit). An explicit empty array
+  # prevents helper processes from being signed correctly for the Mac App Store.
+
+# ─── Publish ───────────────────────────────────────────────────────────────────
+publish:
+  provider: github
+  releaseType: release
