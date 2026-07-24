@@ -41,6 +41,10 @@ export const ALLOWED_HOSTS = [
   "connect.facebook.net",
   "fbcdn.net",
   "static.xx.fbcdn.net",
+  // Meta's unified identity/business-login domain — "managed Meta account" /
+  // Business Portfolio logins redirect here, not through facebook.com.
+  "meta.com",
+  "fb.com",
   // Google login (used for Facebook business login)
   "accounts.google.com",
   "localhost",
