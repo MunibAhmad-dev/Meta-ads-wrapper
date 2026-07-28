@@ -2,7 +2,7 @@ export const APP_NAME = "Meta Ads Manager";
 
 export const PAYMENTS_ENABLED = false;
 export const APP_STORE_REVIEW_URL = "itms-apps://itunes.apple.com/app/id6794068025?action=write-review";
-export const APP_VERSION = "1.0.0";
+export const APP_VERSION = "1.1.0";
 
 export const MESSENGER_URL = 'https://adsmanager.facebook.com/';
 export const MESSENGER_CHAT_URL = 'https://www.facebook.com/messages/t/';
