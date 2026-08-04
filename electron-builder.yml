@@ -43,9 +43,6 @@ mac:
   gatekeeperAssess: true
   notarize:
     teamId: L284ZYR49L
-  extendInfo:
-    NSMicrophoneUsageDescription: "Used for voice and video features within Meta Business tools."
-    NSCameraUsageDescription: "Used for voice and video features within Meta Business tools."
 
 dmg:
   title: Meta Ads Manager
@@ -71,9 +68,6 @@ mas:
   entitlementsLoginHelper: build/entitlements.mas.loginhelper.plist
   provisioningProfile: appsformetaadsprovsionallyprofile.provisionprofile
   icon: assets/icon.png
-  extendInfo:
-    NSMicrophoneUsageDescription: "Used for voice and video features within Meta Business tools."
-    NSCameraUsageDescription: "Used for voice and video features within Meta Business tools."
   # Do NOT set binaries: [] — electron-builder must auto-detect all Electron helper
   # binaries so they receive MAS entitlements (inherit). An explicit empty array
   # prevents helper processes from being signed correctly for the Mac App Store.
